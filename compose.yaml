@@ -1,0 +1,21 @@
+services:
+  server:
+    build:
+      context: backend/
+    environment:
+      NODE_ENV: production
+      YT_DATA_API_KEY: ${YT_DATA_API_KEY}
+      REDIS_URL: ${REDIS_URL}
+      JIO_SAAVN_API: ${JIO_SAAVN_API}
+      DEBUG: False
+    ports:
+      - 3001:3001
+      - 5100:5100
+  
+  frontend:
+    build:
+      context: frontend/
+    environment:
+      - VITE_SERVER_URL=${VITE_SERVER_URL}
+    ports:
+      - 80:80
